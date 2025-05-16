@@ -1,0 +1,11 @@
+/* Base app styles */
+.app {
+  width: 100%;
+}
+
+/* Smooth scrolling for navigation links */
+html {
+  scroll-behavior: smooth;
+}
+
+
