@@ -19,7 +19,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    // Removed invalid option: erasableSyntaxOnly
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
