@@ -55,8 +55,8 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-20 bg-white px-4">
+      <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">技能</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <SkillCategory title="前端技術" skills={frontendSkills} />
@@ -68,4 +68,4 @@ const Skills: React.FC = () => {
   );
 };
 
-export default Skills; 
+export default Skills;

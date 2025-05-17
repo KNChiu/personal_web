@@ -107,7 +107,7 @@ const Projects: React.FC = () => {
 
   return (
     <section id="projects" className="py-20 bg-gray-100">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">作品集</h2>
         
         <div className="flex justify-center flex-wrap gap-2 mb-10">
@@ -138,4 +138,4 @@ const Projects: React.FC = () => {
   );
 };
 
-export default Projects; 
+export default Projects;

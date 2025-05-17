@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   
   return (
     <footer className="bg-gray-900 text-white py-10">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <h3 className="text-xl font-semibold mb-2">張三</h3>
@@ -63,4 +63,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

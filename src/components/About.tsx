@@ -3,7 +3,7 @@ import React from 'react';
 const About: React.FC = () => {
   return (
     <section id="about" className="py-20 bg-gray-100">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">關於我</h2>
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/3">
@@ -34,4 +34,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About; 
+export default About;
