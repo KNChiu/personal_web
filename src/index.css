@@ -5,7 +5,8 @@
 /* Global styles */
 body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  @apply text-gray-800 bg-gray-50;
+  color: rgb(23, 23, 23); /* Direct color instead of @apply text-foreground */
+  background-color: rgb(255, 255, 255); /* Direct color instead of @apply bg-background */
   margin: 0;
   padding: 0;
   min-width: 320px;
@@ -23,14 +24,17 @@ body {
 }
 
 a {
-  @apply font-medium text-primary-DEFAULT no-underline;
+  font-weight: 500; /* Direct style instead of @apply font-medium */
+  color: rgb(59, 130, 246); /* Direct color instead of @apply text-primary */
+  text-decoration: none;
 }
 a:hover {
-  @apply text-primary-600;
+  color: rgb(255, 255, 255); /* Direct color instead of @apply text-primary-foreground */
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-heading leading-tight;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.2;
 }
 
 button {
@@ -40,12 +44,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgb(244, 244, 245); /* Direct color instead of @apply bg-muted */
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  @apply border-primary-500;
+  border-color: rgb(59, 130, 246); /* Direct color instead of @apply border-primary */
 }
 button:focus,
 button:focus-visible {
@@ -55,12 +59,12 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 255); /* Direct color instead of @apply bg-background */
   }
   a:hover {
-    @apply text-primary-600;
+    color: rgb(255, 255, 255); /* Direct color instead of @apply text-primary-foreground */
   }
   button {
-    @apply bg-gray-100;
+    background-color: rgb(244, 244, 245); /* Direct color instead of @apply bg-muted */
   }
 }
