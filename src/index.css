@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: theme('fontFamily.sans');
+  color: theme('colors.neutral.dark');
+  background-color: theme('colors.neutral.light');
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -18,8 +25,6 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  color: #213547;
-  background-color: #ffffff;
 }
 
 a {
