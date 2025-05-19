@@ -11,13 +11,16 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
-    <div className="app min-h-screen">
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
+    <div className="app min-h-screen bg-white">
+      {/* 添加明確的樣式和佈局 */}
+      <div className="flex flex-col w-full">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 };
