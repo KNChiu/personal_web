@@ -80,20 +80,20 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-card">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">聯絡我</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">聯絡我</h2>
         
         <div className="max-w-3xl mx-auto">
           {submitStatus === 'success' && (
-            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
+            <div className="bg-success/20 border border-success text-success px-4 py-3 rounded relative mb-6" role="alert">
               <strong className="font-bold">成功！</strong>
               <span className="block sm:inline"> 您的訊息已成功送出，我會盡快回覆您。</span>
             </div>
           )}
           
           {submitStatus === 'error' && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+            <div className="bg-error/20 border border-error text-error px-4 py-3 rounded relative mb-6" role="alert">
               <strong className="font-bold">錯誤！</strong>
               <span className="block sm:inline"> 送出訊息時發生問題，請稍後再試。</span>
             </div>
@@ -101,7 +101,7 @@ const Contact: React.FC = () => {
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
                 姓名
               </label>
               <input
@@ -110,16 +110,16 @@ const Contact: React.FC = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                  errors.name ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+                className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 bg-muted text-foreground ${
+                  errors.name ? 'border-error focus:ring-error/20' : 'border-neutral-600 focus:ring-primary/20'
                 }`}
                 placeholder="請輸入您的姓名"
               />
-              {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+              {errors.name && <p className="mt-1 text-sm text-error">{errors.name}</p>}
             </div>
             
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
                 電子郵件
               </label>
               <input
@@ -128,16 +128,16 @@ const Contact: React.FC = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                  errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+                className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 bg-muted text-foreground ${
+                  errors.email ? 'border-error focus:ring-error/20' : 'border-neutral-600 focus:ring-primary/20'
                 }`}
                 placeholder="請輸入您的電子郵件"
               />
-              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+              {errors.email && <p className="mt-1 text-sm text-error">{errors.email}</p>}
             </div>
             
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1">
                 訊息
               </label>
               <textarea
@@ -146,19 +146,19 @@ const Contact: React.FC = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows={5}
-                className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-                  errors.message ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+                className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 bg-muted text-foreground ${
+                  errors.message ? 'border-error focus:ring-error/20' : 'border-neutral-600 focus:ring-primary/20'
                 }`}
                 placeholder="請輸入您的訊息"
               ></textarea>
-              {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+              {errors.message && <p className="mt-1 text-sm text-error">{errors.message}</p>}
             </div>
             
             <div className="text-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition ${
+                className={`px-6 py-3 bg-primary text-foreground rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary/30 transition ${
                   isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
                 }`}
               >

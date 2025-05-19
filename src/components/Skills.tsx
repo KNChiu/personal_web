@@ -4,12 +4,12 @@ const SkillBar: React.FC<{ name: string; level: number }> = ({ name, level }) =>
   return (
     <div className="mb-4">
       <div className="flex justify-between mb-1">
-        <span className="text-gray-700 font-medium">{name}</span>
-        <span className="text-gray-500">{level}%</span>
+        <span className="text-foreground font-medium">{name}</span>
+        <span className="text-neutral-400">{level}%</span>
       </div>
-      <div className="w-full bg-gray-200 rounded-full h-2.5">
+      <div className="w-full bg-muted rounded-full h-2.5">
         <div 
-          className="bg-blue-600 h-2.5 rounded-full" 
+          className="bg-primary h-2.5 rounded-full" 
           style={{ width: `${level}%` }}
         ></div>
       </div>
@@ -55,9 +55,9 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white px-4">
+    <section id="skills" className="py-20 bg-background px-4">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">技能</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">技能</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <SkillCategory title="前端技術" skills={frontendSkills} />
           <SkillCategory title="後端技術" skills={backendSkills} />

@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
-    <div className="app min-h-screen bg-white">
+    <div className="app min-h-screen bg-background">
       {/* 添加明確的樣式和佈局 */}
       <div className="flex flex-col w-full">
         <Hero />

@@ -12,21 +12,21 @@ interface Project {
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="h-48 bg-gray-300 relative">
+    <div className="bg-card rounded-lg shadow-md overflow-hidden border border-muted">
+      <div className="h-48 bg-muted relative">
         {/* 這裡可放置專案圖片 */}
-        <div className="h-full w-full flex items-center justify-center text-gray-400">
+        <div className="h-full w-full flex items-center justify-center text-neutral-400">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-        <p className="text-gray-600 mb-4">{project.description}</p>
+        <h3 className="text-xl font-semibold mb-2 text-foreground">{project.title}</h3>
+        <p className="text-neutral-400 mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag, index) => (
-            <span key={index} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+            <span key={index} className="bg-primary-700 text-foreground text-xs px-2 py-1 rounded">
               {tag}
             </span>
           ))}
@@ -37,7 +37,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               href={project.liveUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-sm px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+              className="text-sm px-4 py-2 bg-primary text-foreground rounded hover:bg-primary-600 transition"
             >
               查看專案
             </a>
@@ -47,7 +47,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               href={project.githubUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-sm px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
+              className="text-sm px-4 py-2 bg-muted text-foreground rounded hover:bg-neutral-600 transition"
             >
               查看原始碼
             </a>
@@ -106,13 +106,13 @@ const Projects: React.FC = () => {
     : projects.filter(project => project.tags.includes(filter));
 
   return (
-    <section id="projects" className="py-20 bg-gray-100">
+    <section id="projects" className="py-20 bg-neutral-800">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">作品集</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-foreground">作品集</h2>
         
         <div className="flex justify-center flex-wrap gap-2 mb-10">
           <button 
-            className={`px-4 py-2 text-sm rounded-full transition ${filter === "all" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+            className={`px-4 py-2 text-sm rounded-full transition ${filter === "all" ? "bg-primary text-foreground" : "bg-muted text-foreground hover:bg-neutral-600"}`}
             onClick={() => setFilter("all")}
           >
             全部
@@ -120,7 +120,7 @@ const Projects: React.FC = () => {
           {allTags.map((tag, index) => (
             <button 
               key={index}
-              className={`px-4 py-2 text-sm rounded-full transition ${filter === tag ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+              className={`px-4 py-2 text-sm rounded-full transition ${filter === tag ? "bg-primary text-foreground" : "bg-muted text-foreground hover:bg-neutral-600"}`}
               onClick={() => setFilter(tag)}
             >
               {tag}
