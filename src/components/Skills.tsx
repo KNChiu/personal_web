@@ -1,71 +1,88 @@
-import React from 'react';
+import { useState } from 'react'
 
-const SkillBar: React.FC<{ name: string; level: number }> = ({ name, level }) => {
+type SkillCategory = 'frontend' | 'backend'
+
+const Skills = () => {
+  const [activeCategory, setActiveCategory] = useState<SkillCategory>('frontend')
+
+  const skills: Record<SkillCategory, Array<{name: string, icon: string, level: number}>> = {
+    frontend: [
+      { name: 'React', icon: '⚛️', level: 90 },
+      { name: 'TypeScript', icon: '🔷', level: 85 },
+      { name: 'JavaScript', icon: '🟨', level: 95 },
+      { name: 'HTML/CSS', icon: '🌐', level: 100 }
+    ],
+    backend: [
+      { name: 'Node.js', icon: '🟢', level: 85 },
+      { name: 'Express', icon: '🚀', level: 80 }
+    ]
+  }
+
   return (
-    <div className="mb-4">
-      <div className="flex justify-between mb-1">
-        <span className="text-foreground font-medium">{name}</span>
-        <span className="text-neutral-400">{level}%</span>
+    <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <h2 className="text-3xl font-bold text-center mb-8 text-foreground">Skills</h2>
+      
+      {/* Category buttons */}
+      <div className="flex justify-center space-x-4 mb-8">
+        {(Object.keys(skills) as SkillCategory[]).map((category) => (
+          <button
+            key={category}
+            className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
+              activeCategory === category 
+                ? 'bg-primary text-primary-foreground shadow-lg' 
+                : 'bg-muted text-foreground hover:bg-card'
+            }`}
+            onClick={() => setActiveCategory(category)}
+          >
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </button>
+        ))}
       </div>
-      <div className="w-full bg-muted rounded-full h-2.5">
-        <div 
-          className="bg-primary h-2.5 rounded-full" 
-          style={{ width: `${level}%` }}
-        ></div>
+
+      {/* Skills grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {skills[activeCategory].map((skill: {name: string, icon: string, level: number}) => (
+          <div key={skill.name} className="bg-card rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 border border-neutral-700">
+            {/* Skill header */}
+            <div className="flex items-center space-x-4 mb-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center text-2xl">
+                  {skill.icon}
+                </div>
+              </div>
+              <div className="flex-grow">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-lg font-semibold text-foreground">{skill.name}</h3>
+                  <span className="text-sm font-bold text-primary">{skill.level}%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Progress bar - 使用內聯樣式確保顯示 */}
+            <div style={{ width: '100%', marginTop: '8px' }}>
+              <div style={{
+                width: '100%',
+                height: '12px',
+                backgroundColor: 'rgb(51, 65, 85)', // neutral-700 equivalent
+                borderRadius: '9999px',
+                overflow: 'hidden',
+                border: '1px solid rgb(71, 85, 105)' // border for visibility
+              }}>
+                <div style={{
+                  height: '100%',
+                  background: 'linear-gradient(to right, rgb(99, 102, 241), rgb(6, 182, 212))', // primary to accent
+                  borderRadius: '9999px',
+                  width: `${skill.level}%`,
+                  transition: 'width 1s ease-out',
+                  minWidth: skill.level > 0 ? '2px' : '0' // 確保有最小寬度
+                }}></div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-const SkillCategory: React.FC<{
-  title: string;
-  skills: { name: string; level: number }[];
-}> = ({ title, skills }) => {
-  return (
-    <div className="mb-8">
-      <h3 className="text-xl font-semibold mb-4">{title}</h3>
-      {skills.map((skill, index) => (
-        <SkillBar key={index} name={skill.name} level={skill.level} />
-      ))}
-    </div>
-  );
-};
-
-const Skills: React.FC = () => {
-  const frontendSkills = [
-    { name: 'HTML/CSS', level: 95 },
-    { name: 'JavaScript', level: 90 },
-    { name: 'React', level: 85 },
-    { name: 'TypeScript', level: 80 },
-    { name: 'TailwindCSS', level: 85 },
-  ];
-
-  const backendSkills = [
-    { name: 'Node.js', level: 75 },
-    { name: 'Express', level: 70 },
-    { name: 'MongoDB', level: 65 },
-    { name: 'SQL', level: 60 },
-  ];
-
-  const toolsSkills = [
-    { name: 'Git', level: 90 },
-    { name: 'Webpack', level: 75 },
-    { name: 'Docker', level: 60 },
-    { name: 'CI/CD', level: 65 },
-  ];
-
-  return (
-    <section id="skills" className="py-20 bg-background px-4">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">技能</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <SkillCategory title="前端技術" skills={frontendSkills} />
-          <SkillCategory title="後端技術" skills={backendSkills} />
-          <SkillCategory title="工具與平台" skills={toolsSkills} />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Skills;
+export default Skills
