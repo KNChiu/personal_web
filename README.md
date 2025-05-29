@@ -82,8 +82,10 @@ A modern personal portfolio website built with React + TypeScript + Tailwind CSS
 ## 🚀 Quick Start
 
 ### Requirements
-- Node.js 16.0 or higher
+- **Node.js 18.0 or higher** (Required for Vite 6 and React 19)
 - npm or yarn package manager
+
+⚠️ **Important**: This project uses modern dependencies that require Node.js 18+. If you encounter errors like "Unexpected reserved word" when running `npm run dev`, please upgrade your Node.js version.
 
 ### Installation Steps
 
@@ -168,6 +170,42 @@ npm run dev      # Start development server
 npm run build    # Build production version
 npm run preview  # Preview build result
 npm run lint     # Run ESLint checks
+```
+
+## 🔧 Troubleshooting
+
+### Node.js Version Issues
+
+If you encounter the error `SyntaxError: Unexpected reserved word` when running `npm run dev`, it means your Node.js version is too old.
+
+**Solution Options:**
+
+1. **Upgrade Node.js** (Recommended)
+   ```bash
+   # Using nvm (Node Version Manager)
+   nvm install 18
+   nvm use 18
+   
+   # Or download from official website
+   # https://nodejs.org/
+   ```
+
+2. **Use Docker** (Alternative)
+   ```bash
+   # Create a Dockerfile with Node 18+
+   docker run -it --rm -v $(pwd):/app -w /app -p 5173:5173 node:18 npm run dev
+   ```
+
+3. **Static Preview** (Temporary)
+   Open `test-static.html` in your browser to see a basic version of the portfolio
+
+### Dependencies Issues
+
+If you encounter module resolution errors:
+```bash
+# Clear cache and reinstall
+rm -rf node_modules package-lock.json
+npm install
 ```
 
 ## 🌟 Future Plans
